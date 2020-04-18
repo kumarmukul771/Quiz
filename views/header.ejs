@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./header.css">
+    
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="/">Home </a></li>
+          <li><a href="/easy/gk">General Knowledge</a></li>
+          <li><a href="/easy/films">Films </a></li>
+          <li><a href="/easy/books">Books and Novels</a></li>
+          <li><a href="/easy/history">History</a></li>
+          <li>
+            <a href="#">
+              <i class="fa fa-bars"></i>
+            </a>
+          </li>
+          <input type="search" />
+        </ul>
+      </nav>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(function() {
+  var ulLi = $('nav ul > li'),
+      fa = $('nav ul > li:last-of-type a .fa');
+  
+   $('nav ul').append('<ol></ol>');
+  
+   $('nav').each(function() {
+     for (var i=0; i <= ulLi.length - 3; i++) {
+       $('nav ul > ol').append("<li>"+ i +"</li>");
+       $('nav ul > ol > li').eq(i).html(ulLi.eq(i+1).html());
+     }
+  });
+
+  $('nav ul > li:last-of-type').on('click', function() {
+    fa.toggleClass('fa-bars');
+    fa.toggleClass('fa-times');
+    $(this).parent().children('ol').slideToggle(500);
+  });
+});
+
+    </script>
+
+</html>
